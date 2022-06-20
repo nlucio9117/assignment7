@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<!--Author:Natasha Lucio-->
+<!--Course:CSCI 1300-W1-->
+<!--Program Date:12-1-2021-->
+<!--Description:Assignment 7/ q2-->
+
+<html lang="en">
+
+    <head>
+        <title>Natasha's APSU In-State Credit Hour Calculator</title>
+        <meta charset="UTF-8">
+
+        <style>
+            html {
+               background-color: #FFF9B6;           
+            }
+
+            #header-background {
+                background-color: #FF9292;
+                border-radius: 15px;
+                width: 100%;
+                margin: 0;
+                border: 2px solid white;
+                box-sizing: border-box;
+                margin: 5px;
+            }
+            
+           #header-h1 {
+               text-align: center;
+              font-family:Georgia, 'Times New Roman', Times, serif;
+            }
+
+           main {
+            width: 500px;
+            margin: 0 auto;
+            padding: 20px 40px;
+            background-color: #FFCCD2;
+	        border-radius: 15px;
+	        border: 2px solid white;
+            font-family:Verdana, Geneva, Tahoma, sans-serif;
+            box-sizing: border-box;
+           }
+
+           footer {
+            width: 100%;
+            box-sizing: border-box;
+            background-color: #FF9292;
+            border-radius: 10px;
+            padding: 5px;
+            margin: 5px;
+            text-align: center;
+            border: 2px solid white;
+            font-family: Georgia, 'Times New Roman', Times, serif;
+            font-size: 14px;
+            }
+        </style>
+    </head>
+
+    <body>
+
+        <header id="header-background">
+            <h1 id="header-h1">Natasha's APSU In-State Credit Hour Calculator</h1>
+            <hr>
+        </header>
+        
+        <main>
+            <form name="credithours" action="javascript:creditCalculator()">
+                Calculate your credit hours here 
+                <input type="submit" value="Check">
+            </form>
+            <hr>
+            <div id="hours"></div>
+        </main>
+                    
+        <script>
+            function creditCalculator() {
+         
+                let hours = prompt("How many credit hours are you taking?");
+                hours = parseFloat(hours);
+
+                const PART_TIME = 284.00;
+                const FULL_TIME = 229.00;
+                let partTime = hours * PART_TIME;
+                let fullTime = hours * FULL_TIME;
+                let dollarUSLocale = Intl.NumberFormat('en-US'); //formatting to add the comma according to US English locale
+                
+                if (hours >= 0 && hours < 13) {
+                    document.getElementById("hours").innerHTML = "You will pay: $"+ dollarUSLocale.format(partTime);
+                }
+                else if (hours >= 13) {
+                    document.getElementById("hours").innerHTML = "You will pay: $"+ dollarUSLocale.format(fullTime);
+                } 
+                else {
+                    document.getElementById("hours").innerHTML = "Invalid entry. Please try again.";
+                }
+            }
+        </script>
+    
+        <footer>Copyright &copy; Natasha Lucio 2021</footer>    
+    </body>
+</html>
