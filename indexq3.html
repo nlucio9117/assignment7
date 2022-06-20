@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<!--Author:Natasha Lucio-->
+<!--Course:CSCI 1300-W1-->
+<!--Program Date:12-1-2021-->
+<!--Description:Assignment 7/ q3-->
+
+<html lang="en">
+
+    <head>
+        <title>Natasha's Race Victory Checker</title>
+        <meta charset="UTF-8">
+
+        <style>
+            html {
+               background-color: #FFF9B6;           
+            }
+
+            #header-background {
+                background-color: #FF9292;
+                border-radius: 15px;
+                width: 100%;
+                margin: 0;
+                border: 2px solid white;
+                box-sizing: border-box;
+                margin: 5px;
+            }
+            
+           #header-h1 {
+               text-align: center;
+              font-family:Georgia, 'Times New Roman', Times, serif;
+            }
+
+           main {
+            width: 500px;
+            margin: 0 auto;
+            padding: 20px 40px;
+            background-color: #FFCCD2;
+	        border-radius: 15px;
+	        border: 2px solid white;
+            font-family:Verdana, Geneva, Tahoma, sans-serif;
+            box-sizing: border-box;
+           }
+
+           footer {
+            width: 100%;
+            box-sizing: border-box;
+            background-color: #FF9292;
+            border-radius: 10px;
+            padding: 5px;
+            margin: 5px;
+            text-align: center;
+            border: 2px solid white;
+            font-family: Georgia, 'Times New Roman', Times, serif;
+            font-size: 14px;
+            }
+        </style>
+    </head>
+
+    <body>
+
+        <header id="header-background">
+            <h1 id="header-h1">Natasha's Race Victory Checker</h1>
+            <hr>
+        </header>
+        
+        <main>
+            <form name="racetimes" action="javascript:victoryChecker()">
+                Let's see who won 
+                <input type="submit" value="Check">
+            </form>
+            <hr>
+            <div id="winner"></div>
+            <div id="victory"></div>
+        </main>
+                    
+        <script>
+            function victoryChecker() {
+         
+                let firstRacer = prompt("Racer 1: What is your first name?");
+                let firstRacerTime = prompt("Racer 1: What was your time?");
+                let secondRacer = prompt("Racer 2: What is your first name?");
+                let secondRacerTime = prompt("Racer 2: What was your time?");
+                let result = (firstRacerTime - secondRacerTime);
+                firstRacerTime = parseFloat(firstRacerTime);
+                secondRacerTime = parseFloat(secondRacerTime);
+
+                if (firstRacerTime < secondRacerTime) {
+                    document.getElementById("winner").innerHTML = firstRacer+ " wins! ";
+                    document.getElementById("victory").innerHTML = firstRacer+ " wins the race by " +Math.abs(result) +" second(s).";
+
+                }
+                else if (secondRacerTime < firstRacerTime) {
+                    document.getElementById("winner").innerHTML = secondRacer+ " wins! ";
+                    document.getElementById("victory").innerHTML = secondRacer+ " wins the race by " +Math.abs(result) +" second(s).";
+                }
+                else if (firstRacerTime === secondRacerTime) {
+                    document.getElementById("winner").innerHTML = "There is no clear winner.";
+                    document.getElementById("victory").innerHTML = "This race ends in a tie.";
+                }
+                else {
+                    document.getElementById("winner").innerHTML = "Invalid data.";
+                    document.getElementById("victory").innerHTML = "Invalid data.";
+                }
+            }
+        </script>
+    
+        <footer>Copyright &copy; Natasha Lucio 2021</footer>    
+    </body>
+</html>
